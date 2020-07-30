@@ -146,14 +146,14 @@ namespace IDP_Agent_Geominfo
                         //接收Get参数
                         executePath = ctx.Request.QueryString["executePath"];
                         idToken = ctx.Request.QueryString["idToken"];
-                        softName = ctx.Request.QueryString["softName"];
+                        transferParam = ctx.Request.QueryString["transferParam"];
                         softName = ctx.Request.QueryString["softName"];
                         accountParameters = ctx.Request.QueryString["accountParameters"];
                         agreementType = ctx.Request.QueryString["agreementType"];
                         /*string filename = Path.GetFileName(ctx.Request.RawUrl);
                         string userName = HttpUtility.ParseQueryString(filename).Get("userName");//避免中文乱码*/
                         //进行处理
-                        CustomeInstaller.Logger("收到数据:" + executePath);
+                        CustomeInstaller.Logger(string.Format("收到路径数据:{0}" , executePath));
                     }
                 }
                 //创建进程启动信息实例
