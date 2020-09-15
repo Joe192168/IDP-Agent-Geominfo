@@ -202,8 +202,8 @@ namespace IDP_Agent_Geominfo
                 //使用Writer输出http响应代码,UTF8格式
                 using (StreamWriter writer = new StreamWriter(ctx.Response.OutputStream, Encoding.UTF8))
                 {
-                    CustomeInstaller.Logger(string.Format("处理结果，数据是executPath={0}", executePath));
-                    writer.Write("处理结果，数据是executPath={0}", executePath);
+                    CustomeInstaller.Logger(string.Format("执行exe成功，数据是executPath={0}", executePath));
+                    writer.Write("执行exe成功，数据是executPath={0}", executePath);
                     writer.Close();
                     ctx.Response.Close();
                 }
