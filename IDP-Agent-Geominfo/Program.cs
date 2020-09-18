@@ -63,6 +63,8 @@ namespace IDP_Agent_Geominfo
                     //处理跨域问题
                     ctx.Response.ContentType = "application/json";
                     ctx.Response.AppendHeader("Access-Control-Allow-Origin", "*");
+                    ctx.Response.AppendHeader("Access-Control-Allow-Headers", "Content-type,X-Requested-With,Origin,accept");
+                    ctx.Response.AppendHeader("Access-Control-Allow-Methods", "GET, POST");
                     ThreadPool.QueueUserWorkItem(new WaitCallback(TaskProc), ctx);
                 }
                 listerner.Stop();
@@ -80,10 +82,6 @@ namespace IDP_Agent_Geominfo
                 String _method = request.HttpMethod;
 
                 ctx.Response.StatusCode = 200;//设置返回给客服端http状态代码
-                //处理跨域问题
-                ctx.Response.ContentType = "application/json";
-                ctx.Response.AppendHeader("Access-Control-Allow-Methods", "*");
-                // HttpListenerResponse response = ctx.Response;
                 //exe执行路径参数
                 string executePath = "";
                 //idToken信息
@@ -96,65 +94,58 @@ namespace IDP_Agent_Geominfo
                 string accountParameters = "";
                 //自定义参数
                 string transferParam = "";
-                if (request.HttpMethod == "OPTIONS")
+                if ("POST".Equals(_method))
                 {
-                    ctx.Response.AddHeader("Access-Control-Allow-Headers", "*");
+                    //接收POST参数
+                    Stream stream = ctx.Request.InputStream;
+                    StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                    String body = reader.ReadToEnd();
+                    JObject jo = (JObject)JsonConvert.DeserializeObject(body);
+                    //Console.WriteLine("收到POST数据:" + HttpUtility.UrlDecode(body));
+                    //执行路径
+                    if (jo["executePath"] != null)
+                    {
+                        executePath = jo["executePath"].ToString();
+                    }
+                    //获取idToken
+                    if (jo["idToken"] != null)
+                    {
+                        idToken = jo["idToken"].ToString();
+                    }
+                    //获取程序名称
+                    if (jo["softName"] != null)
+                    {
+                        softName = jo["softName"].ToString();
+                    }
+                    //获取自定义参数
+                    if (jo["transferParam"] != null)
+                    {
+                        transferParam = jo["transferParam"].ToString();
+                    }
+                    //获取协议类型
+                    if (jo["agreementType"] != null)
+                    {
+                        agreementType = jo["agreementType"].ToString();
+                    }
+                    //账号参数
+                    if (jo["accountParameters"] != null)
+                    {
+                        accountParameters = jo["accountParameters"].ToString();
+                    }
                 }
                 else
                 {
-                    if ("POST".Equals(_method))
-                    {
-                        //接收POST参数
-                        Stream stream = ctx.Request.InputStream;
-                        StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                        String body = reader.ReadToEnd();
-                        JObject jo = (JObject)JsonConvert.DeserializeObject(body);
-                        //Console.WriteLine("收到POST数据:" + HttpUtility.UrlDecode(body));
-                        //执行路径
-                        if (jo["executePath"] != null)
-                        {
-                            executePath = jo["executePath"].ToString();
-                        }
-                        //获取idToken
-                        if (jo["idToken"] != null)
-                        {
-                            idToken = jo["idToken"].ToString();
-                        }
-                        //获取程序名称
-                        if (jo["softName"] != null)
-                        {
-                            softName = jo["softName"].ToString();
-                        }
-                        //获取自定义参数
-                        if (jo["transferParam"] != null)
-                        {
-                            transferParam = jo["transferParam"].ToString();
-                        }
-                        //获取协议类型
-                        if (jo["agreementType"] != null)
-                        {
-                            agreementType = jo["agreementType"].ToString();
-                        }
-                        //账号参数
-                        if (jo["accountParameters"] != null)
-                        {
-                            accountParameters = jo["accountParameters"].ToString();
-                        }
-                    }
-                    else
-                    {
-                        //接收Get参数
-                        executePath = ctx.Request.QueryString["executePath"];
-                        idToken = ctx.Request.QueryString["idToken"];
-                        transferParam = ctx.Request.QueryString["transferParam"];
-                        softName = ctx.Request.QueryString["softName"];
-                        accountParameters = ctx.Request.QueryString["accountParameters"];
-                        agreementType = ctx.Request.QueryString["agreementType"];
-                        /*string filename = Path.GetFileName(ctx.Request.RawUrl);
-                        string userName = HttpUtility.ParseQueryString(filename).Get("userName");//避免中文乱码*/
-                        //进行处理
-                        CustomeInstaller.Logger(string.Format("收到路径数据:{0}" , executePath));
-                    }
+                    //接收Get参数
+                    executePath = ctx.Request.QueryString["executePath"];
+                    idToken = ctx.Request.QueryString["idToken"];
+                    transferParam = ctx.Request.QueryString["transferParam"];
+                    softName = ctx.Request.QueryString["softName"];
+                    accountParameters = ctx.Request.QueryString["accountParameters"];
+                    agreementType = ctx.Request.QueryString["agreementType"];
+                    /*string filename = Path.GetFileName(ctx.Request.RawUrl);
+                    string userName = HttpUtility.ParseQueryString(filename).Get("userName");//避免中文乱码*/
+                    //进行处理
+                    CustomeInstaller.Logger(string.Format("收到路径数据:{0}", executePath));
                 }
                 //创建进程启动信息实例
                 ProcessStartInfo startinfo = new ProcessStartInfo();

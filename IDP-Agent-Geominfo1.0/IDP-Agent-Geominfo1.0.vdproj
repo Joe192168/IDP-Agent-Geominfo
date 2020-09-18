@@ -27,12 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_54B9A5572BAB472ABFD48D3BE0C07F8A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_65576611BD61497CAB2AEB2CCA72781A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -281,26 +275,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54B9A5572BAB472ABFD48D3BE0C07F8A"
-            {
-            "SourcePath" = "8:C:\\Windows\\System32\\msiexec.exe"
-            "TargetName" = "8:卸载.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_616B8F113A55435DA415945431D65236"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF00306286894CA689CE9EB9CE9A741C"
             {
             "SourcePath" = "8:C:\\Users\\Lenovo\\Desktop\\idp-agent.ico"
@@ -389,7 +363,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:IDP-Agent-Geominfo1.0"
         "ProductCode" = "8:{2ECEC0C7-3934-4BAB-9587-8096EF5C1275}"
-        "PackageCode" = "8:{F5A9B088-1270-480B-80EB-99D997963DD3}"
+        "PackageCode" = "8:{6FD34759-5790-44F8-9EB3-AACCBB680AB2}"
         "UpgradeCode" = "8:{B04CB99A-625F-4FB0-94CC-E782FAB4F381}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -509,20 +483,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_12E00899E7A84CF3A30A043BCDB724CF"
-            {
-            "Name" = "8:卸载IDP-Agent-Geominfo1.0程序.exe"
-            "Arguments" = "8:/x {2ECEC0C7-3934-4BAB-9587-8096EF5C1275}"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_54B9A5572BAB472ABFD48D3BE0C07F8A"
-            "Folder" = "8:_047689E0870E46DA99DE47AB6E2C9F01"
-            "WorkingFolder" = "8:_616B8F113A55435DA415945431D65236"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6A5568809F094AE7AC003F1928C4EFDB"
             {
             "Name" = "8:IDP-Agent-Geominfo1.0"
