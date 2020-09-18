@@ -183,8 +183,7 @@ namespace IDP_Agent_Geominfo
             try
             {
                 bool _exist = false;
-                RegistryKey local = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-                //RegistryKey local = Registry.LocalMachine;
+                RegistryKey local = Registry.LocalMachine;
                 RegistryKey runs = local.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 if (runs == null)
                 {
@@ -224,12 +223,11 @@ namespace IDP_Agent_Geominfo
         {
             try
             {
-                RegistryKey local = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-                //RegistryKey local = Registry.LocalMachine;
+                RegistryKey local = Registry.LocalMachine;
                 RegistryKey key = local.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 if (key == null)
                 {
-                    local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                    local.CreateSubKey("SOFTWARE//Microsoft//Windows//CurrentVersion//Run");
                 }
                 //若开机自启动则添加键值对
                 if (isStart)
