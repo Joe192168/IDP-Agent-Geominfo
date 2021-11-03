@@ -12,3 +12,6 @@ D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\obj\Debug\IDP-Agent-Geominfo.
 D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\bin\Debug\Newtonsoft.Json.pdb
 D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\bin\Debug\BouncyCastle.Crypto.dll
 D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\bin\Debug\IDP-Agent-Geominfo.exe.config
+D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\bin\Debug\GeometrySDK.dll
+D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\bin\Debug\GeometrySDK.pdb
+D:\VS\source\IDP-Agent-Geominfo\IDP-Agent-Geominfo\obj\Debug\IDP-Agent-Geominfo.csprojAssemblyReference.cache
